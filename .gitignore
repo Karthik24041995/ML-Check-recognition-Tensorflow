@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# TensorFlow
+*.pb
+*.ckpt
+*.h5
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data directory
+data/
+
+# Uploads directory (user uploaded images)
+uploads/*
+!uploads/.gitkeep
+
+# Models (uncomment if models are too large for GitHub)
+# models/*.keras
+# models/*.h5
+
+# Flask instance
+instance/
+
+# Test images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+# Except static assets
+!static/**/*.png
+!static/**/*.jpg
+!models/*.png

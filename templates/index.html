@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Amount Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 Check Amount Recognition</h1>
+            <p class="subtitle">AI-Powered Check Processing with MNIST Model</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                    <h2>Upload Check Image</h2>
+                    <p>Click to browse or drag and drop your check image</p>
+                    <p class="file-info">Supported: JPG, PNG, GIF, BMP (Max 16MB)</p>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    <button class="btn btn-primary" id="browseBtn">Browse Files</button>
+                </div>
+
+                <div class="file-preview" id="filePreview" style="display: none;">
+                    <img id="previewImage" src="" alt="Preview">
+                    <div class="file-details">
+                        <p id="fileName"></p>
+                        <button class="btn btn-secondary" id="changeFileBtn">Change File</button>
+                        <button class="btn btn-primary" id="processBtn">Process Check</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading Spinner -->
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Processing check image...</p>
+            </div>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>Recognition Results</h2>
+
+                <!-- Amount Display -->
+                <div class="amount-card" id="amountCard">
+                    <div class="amount-label">Recognized Amount</div>
+                    <div class="amount-value" id="amountValue">$0.00</div>
+                    <div class="confidence-bar">
+                        <div class="confidence-label">Average Confidence</div>
+                        <div class="confidence-value" id="confidenceValue">0%</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Validation Status -->
+                <div class="validation-card" id="validationCard">
+                    <h3>Validation Status</h3>
+                    <div class="validation-items" id="validationItems"></div>
+                </div>
+
+                <!-- Digit Details -->
+                <div class="digits-card">
+                    <h3>Digit Predictions</h3>
+                    <div class="digits-container" id="digitsContainer"></div>
+                </div>
+
+                <!-- Image Comparison -->
+                <div class="images-card">
+                    <h3>Image Processing</h3>
+                    <div class="image-comparison">
+                        <div class="image-item">
+                            <h4>Original with Detection</h4>
+                            <img id="originalImage" src="" alt="Original">
+                        </div>
+                        <div class="image-item">
+                            <h4>Preprocessed Binary</h4>
+                            <img id="preprocessedImage" src="" alt="Preprocessed">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="actions">
+                    <button class="btn btn-primary" id="newCheckBtn">Process Another Check</button>
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-card">
+                    <h3>⚠️ Error</h3>
+                    <p id="errorMessage"></p>
+                    <button class="btn btn-secondary" id="retryBtn">Try Again</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by TensorFlow MNIST Model | Built with Flask</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
